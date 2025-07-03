@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export default function Header() {
+const Header = () => {
   const pathname = usePathname();
   const isActive = (path: string) => pathname === path;
   const isActiveStyle = "underline underline-offset-8 decoration-[#4880EE]";
@@ -29,7 +29,7 @@ export default function Header() {
       <div className="flex-none min-w-20" />
     </header>
   );
-}
+};
 
 const menuItems = [
   {
@@ -41,3 +41,5 @@ const menuItems = [
     path: "/wishlist",
   },
 ];
+
+export default Header;
