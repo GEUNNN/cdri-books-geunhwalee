@@ -1,3 +1,11 @@
-export default function Home() {
-  return <div>home</div>;
-}
+import NoData from "./components/noData";
+
+const Home = () => {
+  return (
+    <div>
+      <NoData type="search" />
+    </div>
+  );
+};
+
+export default Home;
