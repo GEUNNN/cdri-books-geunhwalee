@@ -23,7 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${notoSansKR.variable} antialiased`}>
         <Header />
-        <main>{children}</main>
+        <main className="flex items-center justify-center">{children}</main>
       </body>
     </html>
   );
