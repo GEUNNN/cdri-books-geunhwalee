@@ -17,6 +17,10 @@ export const useQuerySearchBooks = ({
     },
     initialPageParam: 1,
     select: (data) => {
-      return data.pages.flatMap((page) => page.data.documents);
+      const books = data.pages.flatMap((page) => page.data.documents);
+      return {
+        books,
+        totalCount: data.pages[0].data.meta.total_count,
+      };
     },
   });
