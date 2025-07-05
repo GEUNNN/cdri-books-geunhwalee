@@ -1,4 +1,4 @@
-import NoData from "../components/main/NoData";
+import NoData from "../components/NoData";
 
 const Wishlist = () => {
   return (
