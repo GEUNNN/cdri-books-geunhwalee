@@ -1,5 +1,10 @@
-import { useInfiniteQuery } from "@tanstack/react-query";
-import { searchBooks } from "./book";
+import { useInfiniteQuery, useMutation, useQuery } from "@tanstack/react-query";
+import {
+  getSearchHistory,
+  removeSearchHistory,
+  searchBooks,
+  setSearchHistory,
+} from "./book";
 import { BookSearchRequest } from "@/model/book.dto";
 
 export const useQuerySearchBooks = ({
@@ -23,4 +28,20 @@ export const useQuerySearchBooks = ({
         totalCount: data.pages[0].data.meta.total_count,
       };
     },
+  });
+
+export const useQueryGetSearchHistory = () =>
+  useQuery({
+    queryKey: ["searchHistory"],
+    queryFn: () => getSearchHistory(),
+  });
+
+export const useMutationSetSearchHistory = () =>
+  useMutation({
+    mutationFn: (value: string) => setSearchHistory(value),
+  });
+
+export const useMutationRemoveSearchHistory = () =>
+  useMutation({
+    mutationFn: (value: string) => removeSearchHistory(value),
   });
