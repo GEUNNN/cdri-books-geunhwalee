@@ -3,18 +3,20 @@ import Image from "next/image";
 export interface ButtonProps {
   variant: "primary" | "secondary";
   folded?: boolean;
+  onClick?: () => void;
 }
 
 const Button: React.FC<
   ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>
-> = ({ variant, folded }) => {
+> = ({ variant, folded, onClick }) => {
   const isPrimary = variant === "primary";
   const label = isPrimary ? "구매하기" : "상세보기";
   return (
     <button
-      className={`rounded-2xl px-7 py-4 ${
+      className={`rounded-2xl px-7 py-4 flex items-center justify-center ${
         isPrimary ? "bg-[#007AFF]" : "bg-[#F2F4F6]"
       } ${isPrimary ? "px-7" : "pl-5 pr-4"}`}
+      onClick={onClick}
     >
       <div
         className={`flex items-center gap-2 text-base font-medium ${

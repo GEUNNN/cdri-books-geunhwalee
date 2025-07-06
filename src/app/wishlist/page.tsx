@@ -1,8 +1,8 @@
 "use client";
 import CountText from "@/components/CountText";
-import NoData from "../components/NoData";
 import { useWishList } from "@/hooks/wishlist/useWishList";
-import BookList from "../components/BookList";
+import BookList from "@/components/BookList";
+import NoData from "@/components/NoData";
 
 const WishList = () => {
   const { wishList, isLoading } = useWishList();

@@ -7,7 +7,7 @@ import { useQueryClient } from "@tanstack/react-query";
 export const useHome = () => {
   const queryClient = useQueryClient();
   const [query, setQuery] = useState("");
-  const debouncedQuery = useDebounce(query, 300);
+  const debouncedQuery = useDebounce(query, 500);
 
   const {
     data: bookData,

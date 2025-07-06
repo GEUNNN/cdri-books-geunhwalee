@@ -1,5 +1,5 @@
 import { Book } from "@/model/book.dto";
-import BookListItem from "../../components/BookListItem";
+import BookListItem from "@/components/BookListItem";
 
 export interface BookListProps {
   books: Book[];

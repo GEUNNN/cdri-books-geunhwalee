@@ -1,8 +1,8 @@
 "use client";
 import { useHome } from "@/hooks/home/useHome";
-import BookList from "./components/BookList";
+import BookList from "@/components/BookList";
 import SearchTab from "./components/Searchbox";
-import NoData from "./components/NoData";
+import NoData from "@/components/NoData";
 import CountText from "@/components/CountText";
 
 const Home = () => {
