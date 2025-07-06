@@ -19,12 +19,15 @@ export const useHome = () => {
   } = useQuerySearchBooks({ query: debouncedQuery });
 
   useEffect(() => {
-    refetch()
-      .then(() => setSearchHistory(debouncedQuery))
-      .then(() => {
-        queryClient.invalidateQueries({ queryKey: ["searchHistory"] });
-      });
+    refetch();
   }, [debouncedQuery, refetch]);
+
+  useEffect(() => {
+    if (debouncedQuery && bookData) {
+      setSearchHistory(debouncedQuery);
+      queryClient.invalidateQueries({ queryKey: ["searchHistory"] });
+    }
+  }, [debouncedQuery, bookData, queryClient]);
 
   const { data: searchHistory } = useQuerySearchHistory();
 
