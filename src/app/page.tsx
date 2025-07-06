@@ -6,7 +6,14 @@ import NoData from "./components/NoData";
 import CountText from "@/components/CountText";
 
 const Home = () => {
-  const { bookData, isLoading, searchHistory, query, setQuery } = useHome();
+  const {
+    bookData,
+    isLoading,
+    searchHistory,
+    query,
+    setQuery,
+    deleteSearchHistory,
+  } = useHome();
   const { books, totalCount } = bookData || { books: [], totalCount: 0 };
 
   if (isLoading) return <div>Loading...</div>;
@@ -18,6 +25,7 @@ const Home = () => {
           query={query}
           setQuery={setQuery}
           searchHistory={searchHistory}
+          deleteSearchHistory={deleteSearchHistory}
         />
         <CountText type="search" totalCount={totalCount} />
       </div>

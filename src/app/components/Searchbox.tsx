@@ -4,9 +4,15 @@ interface SearchTabProps {
   query: string;
   setQuery: (query: string) => void;
   searchHistory: string[];
+  deleteSearchHistory: (value: string) => void;
 }
 
-const SearchTab = ({ query, setQuery, searchHistory }: SearchTabProps) => {
+const SearchTab = ({
+  query,
+  setQuery,
+  searchHistory,
+  deleteSearchHistory,
+}: SearchTabProps) => {
   return (
     <search className="flex flex-col gap-4">
       <p className="text-[22px] w-120 font-bold text-[#1A1E27]">도서 검색</p>
@@ -48,7 +54,13 @@ const SearchTab = ({ query, setQuery, searchHistory }: SearchTabProps) => {
               }`}
             >
               {history}
-              <Image src="/icon_close.svg" alt="close" width={24} height={24} />
+              <Image
+                src="/icon_close.svg"
+                alt="close"
+                width={24}
+                height={24}
+                onClick={() => deleteSearchHistory(history)}
+              />
             </div>
           ))}
         </div>

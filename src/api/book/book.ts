@@ -25,7 +25,7 @@ export const searchBooks = async ({
 
 export const getSearchHistory = () => {
   try {
-    const history = localStorage.getItem("searchHisotry");
+    const history = localStorage.getItem("searchHistory");
 
     return history ? JSON.parse(history) : [];
   } catch {
@@ -33,7 +33,9 @@ export const getSearchHistory = () => {
   }
 };
 
-export const setSearchHistory = async (value: string) => {
+export const setSearchHistory = (value: string) => {
+  if (!value) return;
+
   try {
     const history = localStorage.getItem("searchHistory");
     const parsedHistory = history ? JSON.parse(history) : [];

@@ -1,10 +1,5 @@
-import { useInfiniteQuery, useMutation, useQuery } from "@tanstack/react-query";
-import {
-  getSearchHistory,
-  removeSearchHistory,
-  searchBooks,
-  setSearchHistory,
-} from "./book";
+import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
+import { getSearchHistory, searchBooks } from "./book";
 import { BookSearchRequest } from "@/model/book.dto";
 
 export const useQuerySearchBooks = ({
@@ -14,7 +9,7 @@ export const useQuerySearchBooks = ({
   target,
 }: BookSearchRequest) =>
   useInfiniteQuery({
-    queryKey: ["books"],
+    queryKey: ["books", query],
     queryFn: ({ pageParam = 1 }) =>
       searchBooks({ query, page: pageParam, sort, size, target }),
     getNextPageParam: (lastPage, pages) => {
@@ -34,14 +29,4 @@ export const useQuerySearchHistory = () =>
   useQuery({
     queryKey: ["searchHistory"],
     queryFn: () => getSearchHistory(),
-  });
-
-export const useMutationSetSearchHistory = () =>
-  useMutation({
-    mutationFn: (value: string) => setSearchHistory(value),
-  });
-
-export const useMutationRemoveSearchHistory = () =>
-  useMutation({
-    mutationFn: (value: string) => removeSearchHistory(value),
   });
