@@ -1,4 +1,4 @@
-import { useQuerySearchBooks } from "@/api/query";
+import { useQuerySearchBooks } from "@/api/book/query";
 
 export const useHome = () => {
   const {
