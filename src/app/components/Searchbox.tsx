@@ -1,13 +1,20 @@
 import Image from "next/image";
 
-const SearchTab = () => {
+interface SearchTabProps {
+  onSearch: (query: string) => void;
+  searchHistory: string[];
+}
+
+const SearchTab = ({ onSearch, searchHistory }: SearchTabProps) => {
   return (
     <search className="flex flex-col gap-4">
       <p className="text-[22px] w-120 font-bold text-[#1A1E27]">도서 검색</p>
       <form className="flex items-center gap-4">
         <div className="relative">
           <input
-            className="w-120 h-[50px] rounded-2xl bg-[#F2F4F6] pl-[50px]"
+            className={`w-120 h-[50px] rounded-t-2xl bg-[#F2F4F6] pl-[50px] ${
+              searchHistory.length > 0 ? "rounded-b-none" : "rounded-b-2xl"
+            }`}
             type="text"
             placeholder="검색어를 입력해주세요."
           />
@@ -23,6 +30,21 @@ const SearchTab = () => {
           상세검색
         </button>
       </form>
+      {searchHistory.length > 0 && (
+        <div className="flex flex-col mt-[-16px]">
+          {searchHistory.map((history, idx) => (
+            <div
+              key={idx}
+              className={`flex items-center justify-between pr-[25px] w-120 h-[50px] pl-[50px] text-base font-medium text-[#8D94A0] bg-[#F2F4F6] ${
+                idx === searchHistory.length - 1 ? "rounded-b-2xl" : ""
+              }`}
+            >
+              {history}
+              <Image src="/icon_close.svg" alt="close" width={24} height={24} />
+            </div>
+          ))}
+        </div>
+      )}
     </search>
   );
 };

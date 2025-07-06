@@ -1,4 +1,4 @@
-import { useQuerySearchBooks } from "@/api/book/query";
+import { useQuerySearchBooks, useQuerySearchHistory } from "@/api/book/query";
 
 export const useHome = () => {
   const {
@@ -9,5 +9,14 @@ export const useHome = () => {
     hasNextPage,
   } = useQuerySearchBooks({ query: "안녕" });
 
-  return { bookData, isLoading, isError, fetchNextPage, hasNextPage };
+  const { data: searchHistory } = useQuerySearchHistory();
+
+  return {
+    bookData,
+    isLoading,
+    isError,
+    fetchNextPage,
+    hasNextPage,
+    searchHistory,
+  };
 };

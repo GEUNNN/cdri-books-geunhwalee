@@ -23,16 +23,17 @@ export const searchBooks = async ({
   return response;
 };
 
-export const getSearchHistory = async () => {
+export const getSearchHistory = () => {
   try {
-    const history = localStorage.getItem("searchHistory");
+    const history = localStorage.getItem("searchHisotry");
+
     return history ? JSON.parse(history) : [];
   } catch {
     console.error("검색 기록 조회 실패");
   }
 };
 
-export const setSearchHistory = async (value: string) => {
+export const setSearchHistory = (value: string) => {
   try {
     const history = localStorage.getItem("searchHistory");
     const parsedHistory = history ? JSON.parse(history) : [];
@@ -50,7 +51,7 @@ export const setSearchHistory = async (value: string) => {
   }
 };
 
-export const removeSearchHistory = async (value: string) => {
+export const removeSearchHistory = (value: string) => {
   try {
     const history = localStorage.getItem("searchHistory");
     const parsedHistory = history ? JSON.parse(history) : [];
