@@ -1,6 +1,7 @@
 import { Book } from "@/model/book.dto";
 import Button from "./button";
 import Image from "next/image";
+import { useMutationSetWishList } from "@/api/wishlist/query";
 
 export interface BookItemDetailProps {
   book: Book;
@@ -8,6 +9,7 @@ export interface BookItemDetailProps {
 }
 
 export const BookItemDetail = ({ book, onClick }: BookItemDetailProps) => {
+  const { mutate: setWishList } = useMutationSetWishList();
   return (
     <div className="flex pl-14 py-6">
       <div className="grow-3 relative">
@@ -19,7 +21,7 @@ export const BookItemDetail = ({ book, onClick }: BookItemDetailProps) => {
           height={24}
           className="absolute top-2 right-15"
           onClick={() => {
-            console.log("wishlist");
+            setWishList(book);
           }}
         />
       </div>
