@@ -10,7 +10,12 @@ const BookListItem = ({ book }: BookListItemProps) => {
   return (
     <article className="flex flex-row justify-between p-4 border-b border-[#D2D6DA]">
       <div className="flex items-center pl-8 gap-12">
-        <Image src={book.thumbnail} alt={book.title} width={48} height={68} />
+        <Image
+          src={book.thumbnail}
+          alt={book.title || "책 제목"}
+          width={48}
+          height={68}
+        />
         <div className="flex flex-row items-center gap-4">
           <div className="text-lg font-bold text-[#353C49]">{book.title}</div>
           <div className="font-medium text-sm text-[#6D7582]">

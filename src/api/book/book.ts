@@ -33,7 +33,7 @@ export const getSearchHistory = () => {
   }
 };
 
-export const setSearchHistory = (value: string) => {
+export const setSearchHistory = async (value: string) => {
   try {
     const history = localStorage.getItem("searchHistory");
     const parsedHistory = history ? JSON.parse(history) : [];
@@ -51,7 +51,7 @@ export const setSearchHistory = (value: string) => {
   }
 };
 
-export const removeSearchHistory = (value: string) => {
+export const removeSearchHistory = async (value: string) => {
   try {
     const history = localStorage.getItem("searchHistory");
     const parsedHistory = history ? JSON.parse(history) : [];

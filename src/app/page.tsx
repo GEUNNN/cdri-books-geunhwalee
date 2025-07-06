@@ -6,7 +6,7 @@ import NoData from "./components/NoData";
 import CountText from "@/components/CountText";
 
 const Home = () => {
-  const { bookData, isLoading, searchHistory } = useHome();
+  const { bookData, isLoading, searchHistory, query, setQuery } = useHome();
   const { books, totalCount } = bookData || { books: [], totalCount: 0 };
 
   if (isLoading) return <div>Loading...</div>;
@@ -14,7 +14,11 @@ const Home = () => {
   return (
     <section className="w-[960px] mx-auto">
       <div className="flex flex-col gap-4 mb-9">
-        <SearchTab onSearch={() => {}} searchHistory={searchHistory} />
+        <SearchTab
+          query={query}
+          setQuery={setQuery}
+          searchHistory={searchHistory}
+        />
         <CountText type="search" totalCount={totalCount} />
       </div>
       {books && books.length > 0 ? (
