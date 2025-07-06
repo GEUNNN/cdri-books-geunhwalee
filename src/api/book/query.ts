@@ -30,7 +30,7 @@ export const useQuerySearchBooks = ({
     },
   });
 
-export const useQueryGetSearchHistory = () =>
+export const useQuerySearchHistory = () =>
   useQuery({
     queryKey: ["searchHistory"],
     queryFn: () => getSearchHistory(),
