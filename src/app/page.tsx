@@ -3,6 +3,7 @@ import { useHome } from "@/hooks/home/useHome";
 import BookList from "./components/BookList";
 import SearchTab from "./components/Searchbox";
 import NoData from "./components/NoData";
+import SearchCountText from "./components/SearchCountText";
 
 const Home = () => {
   const { bookData, isLoading } = useHome();
@@ -12,7 +13,10 @@ const Home = () => {
 
   return (
     <section className="w-[960px] mx-auto">
-      <SearchTab totalCount={totalCount} />
+      <div className="flex flex-col gap-4 mb-9">
+        <SearchTab />
+        <SearchCountText totalCount={totalCount} />
+      </div>
       {books && books.length > 0 ? (
         <BookList books={books} />
       ) : (
